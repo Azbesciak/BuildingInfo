@@ -1,0 +1,4 @@
+rootProject.name = 'BuildingInfo'
+include 'frontend'
+include 'spring-boot-server'
+
