@@ -16,17 +16,17 @@ class ModelTest {
   private val delta =  0.0001
   @BeforeEach
   fun setUp() {
-    level1 = Level(name = "1st", id = 1, locations = listOf(
+    level1 = Level(name = "1st", id = 1, rooms = listOf(
       Room(cube = 2.0, area = 7.0, heating = 10.0, light = 8.0, id = 999, name = "Biuro"),
       Room(cube = 7.0, area = 3.0, heating = 15.0, light = 1.0, id = 12, name = "Living room"),
       Room(cube = 8.0, area = 5.0, heating = 3.0, light = 17.0, id = 17, name = "Sleeping room")
     ))
-    level2 = Level(name = "2st", id = 1, locations = listOf(
+    level2 = Level(name = "2st", id = 1, rooms = listOf(
       Room(cube = 3.0, area = 14.47, heating = 17.0, light = 8.0, id = 17, name = "Bathroom"),
       Room(cube = 17.33, area = 85.0, heating = 0.5, light = 1.8, id = 162, name = "Shed"),
       Room(cube = 56.0, area = 14.14, heating = 3.17, light = 17.1, id = 177, name = "Loft")
     ))
-    building = Building(name = "Cottage", id = 6, locations = listOf(level1, level2))
+    building = Building(name = "Cottage", id = 6, levels = listOf(level1, level2))
   }
 
   @Test

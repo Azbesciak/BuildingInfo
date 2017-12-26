@@ -26,7 +26,6 @@ class BuildingInformation {
     source.registerCorsConfiguration("/**", config)
     return CorsFilter(source)
   }
-
 }
 
 fun main(args: Array<String>) {

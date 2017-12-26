@@ -1,7 +1,8 @@
 package cs.io.buildingInfo.location
 
 abstract class LocationAggregator<out T : Location>(
-  protected open val locations: List<T>) : Location {
+  private val locations: List<T>
+) : Location {
   override val cube: Double by lazy {
     aggregate { it.cube }
   }

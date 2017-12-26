@@ -1,12 +1,24 @@
 package cs.io.buildingInfo
 
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.JsonNode
+import com.fasterxml.jackson.databind.ObjectMapper
+import cs.io.buildingInfo.location.Room
 import java.util.*
 
 
 inline infix fun <T> Optional<T>.or(supplier: () -> Optional<T>) = if (isPresent) this else supplier()
 
-inline infix fun <S, T> S.mapTo(f: S.() -> T): T = f()
-inline infix fun <S, T> S.map(f: S.() -> T): T? = if (this != null) f(this) else null
-inline infix fun <S> S.orElse(f: S.() -> S): S = this ?: f()
 
+fun JsonNode.asList(): List<JsonNode> = this.asIterable().toList()
+fun JsonNode.asRoom() = Room(
+  id = getId(),
+  name = getName(),
+  light = findPath("light").asDouble(),
+  heating = findPath("heating").asDouble(),
+  area = findPath("area").asDouble(),
+  cube = findPath("cube").asDouble()
+)
 
+fun JsonNode.getId() = this.get("id").asLong()
+fun JsonNode.getName() = this.get("name").asText()
