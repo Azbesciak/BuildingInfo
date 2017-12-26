@@ -23,6 +23,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
+apply plugin: "kotlin-allopen"
 
 group = 'cs.io'
 version = '0.0.1-SNAPSHOT'
@@ -59,7 +60,7 @@ dependencies {
   compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
   runtime('org.springframework.boot:spring-boot-devtools')
   compile('com.fasterxml.jackson.datatype:jackson-datatype-jsr310')
-  compile('com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2')
+  compile('com.fasterxml.jackson.module:jackson-module-kotlin:2.9.3')
   compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
   compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
   compile("org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}")
