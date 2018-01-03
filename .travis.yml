@@ -5,7 +5,7 @@ before_install:
 - chmod +x gradlew
 - chmod +x .utility/push-javadoc-to-gh-pages.sh
 after_success:
-  - gradlew dokka
+  - ./gradlew dokka
   - .utility/push-javadoc-to-gh-pages.sh
 env:
   global:
