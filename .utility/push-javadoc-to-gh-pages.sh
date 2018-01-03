@@ -20,7 +20,7 @@ if [ "$TRAVIS_REPO_SLUG" == "Azbesciak/BuildingInfo" ] && [ "$TRAVIS_JDK_VERSION
 
   cd gh-pages
   git rm -rf ./javadoc
-  cp -Rf $HOME/javadoc-latest ./javadoc
+  cp -Rf $HOME/spring-boot-server/build/javadoc ./javadoc
   git add -f .
   git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
   git push -fq origin gh-pages > /dev/null

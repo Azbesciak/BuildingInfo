@@ -2,8 +2,10 @@ buildscript {
   ext {
     kotlinVersion = '1.2.10'
     springBootVersion = '2.0.0.M7'
+    dokka_version = '0.9.15'
   }
   repositories {
+    jcenter()
     mavenCentral()
     maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
@@ -14,6 +16,7 @@ buildscript {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
     classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
     classpath 'org.springframework:springloaded:1.2.6.RELEASE'
+    classpath "org.jetbrains.dokka:dokka-gradle-plugin:${dokka_version}"
   }
 }
 
@@ -24,11 +27,16 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 apply plugin: "kotlin-allopen"
+apply plugin: 'org.jetbrains.dokka'
 
 group = 'cs.io'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+dokka {
+  outputFormat = 'html'
+  outputDirectory = "$buildDir/javadoc"
+}
 
 idea {
   module {
