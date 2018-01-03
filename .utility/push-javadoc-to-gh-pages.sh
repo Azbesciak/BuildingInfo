@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo -e "CONSTANTS:::\n"
+echo -e "$TRAVIS_REPO_SLUG "
+echo -e "$TRAVIS_JDK_VERSION "
+echo -e "$TRAVIS_PULL_REQUEST "
+echo -e "$TRAVIS_BRANCH \n"
+
+
 if [ "$TRAVIS_REPO_SLUG" == "Azbesciak/BuildingInfo" ] && [ "$TRAVIS_JDK_VERSION" == "oraclejdk8" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
 
   echo -e "Publishing javadoc...\n"
