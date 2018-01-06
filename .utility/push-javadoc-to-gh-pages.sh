@@ -16,7 +16,7 @@ if [ "$TRAVIS_REPO_SLUG" == "Azbesciak/BuildingInfo" ] && [ "$TRAVIS_JDK_VERSION
   cp -Rf $HOME/javadoc-latest ./javadoc
   git add -f .
   git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
-  git push origin `git subtree split --prefix javadoc gh-pages`:gh-pages --force > /dev/null
+  git subtree push -fq --prefix ./javadoc origin gh-pages > /dev/null
   echo -e "Published Javadoc to gh-pages.\n"
 
 fi
