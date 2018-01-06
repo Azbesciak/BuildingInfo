@@ -28,7 +28,7 @@ class LocationCalculationTests(private val webApplicationContext: WebApplication
 
   @Test
   fun `test area calculations for building`() {
-    val perform = mockMvc.perform(get("/cube").contentType(MediaType.APPLICATION_JSON_UTF8)
+    val perform = mockMvc.perform(post("/cube").contentType(MediaType.APPLICATION_JSON_UTF8)
       .content("""
         {
           "location": {
