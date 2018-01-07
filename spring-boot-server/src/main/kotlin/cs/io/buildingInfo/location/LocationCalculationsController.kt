@@ -16,4 +16,14 @@ class LocationCalculationsController {
   fun countTotalArea(@RequestBody loc: Location): Double {
     return loc.area
   }
+  @PostMapping("/LightPerArea")
+  fun calculateLightPerArea(@RequestBody loc: Location): Double{
+    return loc.light/loc.area
+  }
+
+  @PostMapping("/HeatperCube")
+  fun calculateHeatingPerVolume(@RequestBody loc: Location): Double{
+    return loc.heating/loc.cube
+  }
+
 }
