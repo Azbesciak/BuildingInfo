@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>cs.io.buildingInfo.location - spring-boot-server</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-boot-server</a>&nbsp;/&nbsp;<a href=".">cs.io.buildingInfo.location</a><br/>
+<br/>
+<h2>Package cs.io.buildingInfo.location</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-building/index.html">Building</a></p>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Building</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location-aggregator/index.html"><span class="identifier">LocationAggregator</span></a><span class="symbol">&lt;</span><a href="-level/index.html"><span class="identifier">Level</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-level/index.html">Level</a></p>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Level</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location-aggregator/index.html"><span class="identifier">LocationAggregator</span></a><span class="symbol">&lt;</span><a href="-room/index.html"><span class="identifier">Room</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-location/index.html">Location</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Location</span></code>
+<p>Basic interface to represent any locations.
+It assumes that every location has a cube (given in meters^3), area (meters^2), heating (KWh) and light.
+Also, each location has it's own id. However, its interpretation is dependent on the consumer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-location-aggregator/index.html">LocationAggregator</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-location-calculations-controller/index.html">LocationCalculationsController</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">LocationCalculationsController</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-location-deserializer/index.html">LocationDeserializer</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">LocationDeserializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-room/index.html">Room</a></p>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Room</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

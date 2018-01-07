@@ -1,0 +1,5 @@
+$dokka.format:html
+$dokka.linkExtension:html
+
+cs.io.buildingInfo
+cs.io.buildingInfo.location
