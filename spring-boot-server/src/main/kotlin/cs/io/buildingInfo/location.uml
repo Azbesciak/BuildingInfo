@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cs.io.buildingInfo.location</OriginalElement>
+  <nodes>
+    <node x="89.75" y="343.0">cs.io.buildingInfo.location.LocationAggregator</node>
+    <node x="279.0" y="776.0">cs.io.buildingInfo.location.Level</node>
+    <node x="0.0" y="1138.0">cs.io.buildingInfo.location.LocationCalculationsController</node>
+    <node x="460.75" y="211.0">cs.io.buildingInfo.location.Room</node>
+    <node x="0.0" y="776.0">cs.io.buildingInfo.location.Building</node>
+    <node x="383.0" y="0.0">cs.io.buildingInfo.location.Location</node>
+    <node x="853.75" y="0.0">cs.io.buildingInfo.location.LocationDeserializer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cs.io.buildingInfo.location.Room" target="cs.io.buildingInfo.location.Location">
+      <point x="0.0" y="-257.5" />
+      <point x="634.75" y="186.0" />
+      <point x="483.5" y="186.0" />
+      <point x="33.5" y="80.5" />
+    </edge>
+    <edge source="cs.io.buildingInfo.location.Level" target="cs.io.buildingInfo.location.LocationAggregator">
+      <point x="0.0" y="-158.5" />
+      <point x="401.0" y="751.0" />
+      <point x="353.0" y="751.0" />
+      <point x="87.75" y="125.5" />
+    </edge>
+    <edge source="cs.io.buildingInfo.location.LocationAggregator" target="cs.io.buildingInfo.location.Location">
+      <point x="0.0" y="-125.5" />
+      <point x="265.25" y="186.0" />
+      <point x="416.5" y="186.0" />
+      <point x="-33.5" y="80.5" />
+    </edge>
+    <edge source="cs.io.buildingInfo.location.Building" target="cs.io.buildingInfo.location.LocationAggregator">
+      <point x="0.0" y="-158.5" />
+      <point x="129.5" y="751.0" />
+      <point x="177.5" y="751.0" />
+      <point x="-87.75" y="125.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6807843137254901" x="599.0" y="627.5000000000001" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
