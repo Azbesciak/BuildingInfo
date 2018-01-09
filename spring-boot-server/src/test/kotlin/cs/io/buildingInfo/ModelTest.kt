@@ -3,6 +3,8 @@ package cs.io.buildingInfo
 import cs.io.buildingInfo.location.Building
 import cs.io.buildingInfo.location.Level
 import cs.io.buildingInfo.location.Room
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -14,6 +16,7 @@ class ModelTest {
   lateinit var level2: Level
   lateinit var building: Building
   private val delta =  0.0001
+
   @BeforeEach
   fun setUp() {
     level1 = Level(name = "1st", id = 1, rooms = listOf(
@@ -70,5 +73,22 @@ class ModelTest {
       Executable { assertEquals(level1.heating + level2.heating, building.heating, delta) }
     )
   }
+
+  @Test
+  fun `test counting cube`() {
+    val cubedRooms = mockedRoomsWithCube(listOf(1.0, 2.0, 3.0, 4.0))
+    val level1 = Level("lama", 1234, cubedRooms)
+    assertEquals(10.0, level1.cube, delta)
+
+    val biggerRooms = mockedRoomsWithCube(listOf(65.0, 17.75, 14.1))
+    val level2 = Level("koza", 4321, biggerRooms)
+    assertEquals(96.85, level2.cube, delta)
+
+    val building = Building("big and small", 666, listOf(level1, level2))
+    assertEquals(106.85, building.cube, delta)
+  }
+
+  private fun mockedRoomsWithCube(cubes: List<Double>) =
+    cubes.map { mockk<Room>().apply { every {cube} returns it } }
 
 }
