@@ -83,6 +83,8 @@ class LocationCalculationTests(private val webApplicationContext: WebApplication
           }
         }
         """)).andDo(MockMvcResultHandlers.print())
-    perform.andExpect(status().isOk)
+    perform
+      .andExpect(status().isOk)
+      .andExpect(content().json("138.0"))
   }
 }
