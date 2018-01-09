@@ -91,4 +91,18 @@ class ModelTest {
   private fun mockedRoomsWithCube(cubes: List<Double>) =
     cubes.map { mockk<Room>().apply { every {cube} returns it } }
 
+
+  @Test
+  fun `should not allow non-positive values for attributes`() {
+    assertAll(
+      Executable { assertThrows(IllegalArgumentException::class.java ,
+        {Room(-1.0, 10.0, 14.0, 9.0, "asd", 45)}) },
+      Executable { assertThrows(IllegalArgumentException::class.java ,
+        {Room(1.0, -10.0, 14.0, 9.0, "asd", 45)}) },
+      Executable { assertThrows(IllegalArgumentException::class.java ,
+        {Room(1.0, 10.0, 0.0, 9.0, "asd", 45)}) },
+      Executable { assertThrows(IllegalArgumentException::class.java ,
+        {Room(1.0, 10.0, 14.0, -0.1, "asd", 45)}) }
+    )
+  }
 }

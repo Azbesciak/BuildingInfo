@@ -7,4 +7,11 @@ data class Room(
   override val light: Double,
   override val name: String,
   override val id: Long
-) : Location
+) : Location {
+  init {
+      require( cube > 0)
+      require( area > 0)
+      require( heating > 0)
+      require( light > 0)
+  }
+}
