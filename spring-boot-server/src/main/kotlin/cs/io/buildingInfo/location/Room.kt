@@ -1,5 +1,9 @@
 package cs.io.buildingInfo.location
 
+/**
+ * Basic implementation of {#link Location}.
+ * Requires each value to be positive, otherwise throws {#link IllegalStateException}.
+ */
 data class Room(
   override val cube: Double,
   override val area: Double,
