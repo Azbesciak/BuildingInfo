@@ -3,7 +3,12 @@ package cs.io.buildingInfo.location
 import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.*
 
-
+/**
+ * Json Deserializer which parses input to some location, depending on input structure.
+ * It can return {#link Room}, {#link Level} or {#link Building}.
+ * Also, when data is malformed, can throw Jackson's Parse Error/NullPointer when some fields are missing.
+ * When additional parameters are passed, they are not considered.
+ */
 class LocationDeserializer : JsonDeserializer<Location>() {
 
   override fun deserialize(p: JsonParser, ctxt: DeserializationContext): Location {

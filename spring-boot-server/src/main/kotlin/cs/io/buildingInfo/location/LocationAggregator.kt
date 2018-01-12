@@ -1,5 +1,11 @@
 package cs.io.buildingInfo.location
 
+/**
+ * Upper level which contains some other locations.
+ * There is no requirement of location type.
+ * All calculations are lazy - calculated only once
+ * for all aggregated location when given is called.
+ */
 abstract class LocationAggregator<out T : Location>(
   private val locations: List<T>
 ) : Location {
