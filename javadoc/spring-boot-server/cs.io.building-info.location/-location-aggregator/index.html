@@ -9,6 +9,10 @@
 <br/>
 <h1>LocationAggregator</h1>
 <code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-location/index.html"><span class="identifier">Location</span></a></code>
+<p>Upper level which contains some other locations.
+There is no requirement of location type.
+All calculations are lazy - calculated only once
+for all aggregated location when given is called.</p>
 <h3>Constructors</h3>
 <table>
 <tbody>
@@ -17,7 +21,12 @@
 <p><a href="-init-.html">&lt;init&gt;</a></p>
 </td>
 <td>
-<code><span class="identifier">LocationAggregator</span><span class="symbol">(</span><span class="identifier" id="cs.io.buildingInfo.location.LocationAggregator$<init>(kotlin.collections.List((cs.io.buildingInfo.location.LocationAggregator.T)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
+<code><span class="identifier">LocationAggregator</span><span class="symbol">(</span><span class="identifier" id="cs.io.buildingInfo.location.LocationAggregator$<init>(kotlin.collections.List((cs.io.buildingInfo.location.LocationAggregator.T)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Upper level which contains some other locations.
+There is no requirement of location type.
+All calculations are lazy - calculated only once
+for all aggregated location when given is called.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -88,7 +97,11 @@
 <p><a href="../-level/index.html">Level</a></p>
 </td>
 <td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Level</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><a href="../-room/index.html"><span class="identifier">Room</span></a><span class="symbol">&gt;</span></code></td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Level</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><a href="../-room/index.html"><span class="identifier">Room</span></a><span class="symbol">&gt;</span></code>
+<p>Represents single level of some building structure.
+Contract is that it is a container for lower-spaced objects, in this case - {#link Room}
+However, it can be also some other location with inherits after {#link Room}.</p>
+</td>
 </tr>
 </tbody>
 </table>

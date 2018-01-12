@@ -10,5 +10,9 @@
 <h1>&lt;init&gt;</h1>
 <a name="cs.io.buildingInfo.location.LocationDeserializer$&lt;init&gt;()"></a>
 <code><span class="identifier">LocationDeserializer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Json Deserializer which parses input to some location, depending on input structure.
+It can return {#link Room}, {#link Level} or {#link Building}.
+Also, when data is malformed, can throw Jackson's Parse Error/NullPointer when some fields are missing.
+When additional parameters are passed, they are not considered.</p>
 </BODY>
 </HTML>

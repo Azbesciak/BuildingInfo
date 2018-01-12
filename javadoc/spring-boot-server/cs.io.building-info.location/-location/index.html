@@ -67,14 +67,22 @@ Also, each location has it's own id. However, its interpretation is dependent on
 <p><a href="../-location-aggregator/index.html">LocationAggregator</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span></code></td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span></code>
+<p>Upper level which contains some other locations.
+There is no requirement of location type.
+All calculations are lazy - calculated only once
+for all aggregated location when given is called.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="../-room/index.html">Room</a></p>
 </td>
 <td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Room</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span></code></td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Room</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Location</span></code>
+<p>Basic implementation of {#link Location}.
+Requires each value to be positive, otherwise throws {#link IllegalStateException}.</p>
+</td>
 </tr>
 </tbody>
 </table>

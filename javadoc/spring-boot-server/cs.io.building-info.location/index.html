@@ -30,7 +30,11 @@
 <p><a href="-level/index.html">Level</a></p>
 </td>
 <td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Level</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location-aggregator/index.html"><span class="identifier">LocationAggregator</span></a><span class="symbol">&lt;</span><a href="-room/index.html"><span class="identifier">Room</span></a><span class="symbol">&gt;</span></code></td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Level</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location-aggregator/index.html"><span class="identifier">LocationAggregator</span></a><span class="symbol">&lt;</span><a href="-room/index.html"><span class="identifier">Room</span></a><span class="symbol">&gt;</span></code>
+<p>Represents single level of some building structure.
+Contract is that it is a container for lower-spaced objects, in this case - {#link Room}
+However, it can be also some other location with inherits after {#link Room}.</p>
+</td>
 </tr>
 <tr>
 <td>
@@ -48,28 +52,46 @@ Also, each location has it's own id. However, its interpretation is dependent on
 <p><a href="-location-aggregator/index.html">LocationAggregator</a></p>
 </td>
 <td>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code></td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">LocationAggregator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code>
+<p>Upper level which contains some other locations.
+There is no requirement of location type.
+All calculations are lazy - calculated only once
+for all aggregated location when given is called.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="-location-calculations-controller/index.html">LocationCalculationsController</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">LocationCalculationsController</span></code></td>
+<code><span class="keyword">class </span><span class="identifier">LocationCalculationsController</span></code>
+<p>Main controller responsible for giving information about locations.
+It require JSON input format, in most cases return single value.
+Methods have polimorfic inputs - however, correct json structure is required,
+otherwise may be wrongly parsed.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="-location-deserializer/index.html">LocationDeserializer</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">LocationDeserializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span></code></td>
+<code><span class="keyword">class </span><span class="identifier">LocationDeserializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><a href="-location/index.html"><span class="identifier">Location</span></a><span class="symbol">&gt;</span></code>
+<p>Json Deserializer which parses input to some location, depending on input structure.
+It can return {#link Room}, {#link Level} or {#link Building}.
+Also, when data is malformed, can throw Jackson's Parse Error/NullPointer when some fields are missing.
+When additional parameters are passed, they are not considered.</p>
+</td>
 </tr>
 <tr>
 <td>
 <p><a href="-room/index.html">Room</a></p>
 </td>
 <td>
-<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Room</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code></td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">Room</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-location/index.html"><span class="identifier">Location</span></a></code>
+<p>Basic implementation of {#link Location}.
+Requires each value to be positive, otherwise throws {#link IllegalStateException}.</p>
+</td>
 </tr>
 </tbody>
 </table>
