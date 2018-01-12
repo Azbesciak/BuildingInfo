@@ -1,29 +1,37 @@
-export interface Location {
-  id: number
-  name: string
+export abstract class Location {
+  constructor(public id: number,
+              public name: string = null) {
+  }
 }
 
-export class Building implements Location{
-  constructor(public id: number = null,
-              public name: string = null,
+export enum LocationType {
+  ROOM, LEVEL, BUILDING
+}
+
+export class Building extends Location {
+  constructor(id: number = null,
+              name: string = null,
               public levels: Level[] = []) {
+    super(id, name)
   }
 }
 
-export class Level implements Location{
-  constructor(public id: number = null,
-              public name: string = null,
+export class Level extends Location {
+  constructor(id: number = null,
+              name: string = null,
               public rooms: Room[] = []) {
+    super(id, name)
   }
 }
 
-export class Room implements Location{
-  constructor(public id: number = null,
-              public name: string = null,
+export class Room extends Location {
+  constructor(id: number = null,
+              name: string = null,
               public cube: number = null,
               public area: number = null,
               public light: number = null,
               public heating: number = null) {
+    super(id, name)
   }
 }
 

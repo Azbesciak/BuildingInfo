@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./functional/data/data.service";
 import {FormsModule} from "@angular/forms";
-import {RoutingModule} from "./functional/routing/routing.module";
 import {FunctionalModule} from "./functional/functional.module";
 import {MainModule} from "./main/main.module";
 
@@ -18,7 +17,6 @@ import {MainModule} from "./main/main.module";
     HttpClientModule,
     FormsModule,
     FunctionalModule,
-    RoutingModule,
     MainModule,
   ],
   providers: [DataService],

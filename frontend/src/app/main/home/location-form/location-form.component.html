@@ -1,0 +1,23 @@
+<form #locForm="ngForm" *ngIf="location" (submit)="onCreate()">
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="location.id" name="id" placeholder="Location id" type="number" required pattern="\d+">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [(ngModel)]="location.name" name="name" type="text" placeholder="Name" required>
+  </mat-form-field>
+  <div *ngIf="isRoom()">
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="location.cube" name="cube" placeholder="Cube" required type="number" customMin="0.01">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="location.area" name="area" placeholder="Area" required type="number" customMin="0.01">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="location.heating" name="heating" placeholder="Heating" required type="number" customMin="0.01">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="location.light" name="light" placeholder="Light" required type="number" customMin="0.01">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" [disabled]="locForm.invalid"><mat-icon>add</mat-icon><span>Add</span></button>
+</form>
