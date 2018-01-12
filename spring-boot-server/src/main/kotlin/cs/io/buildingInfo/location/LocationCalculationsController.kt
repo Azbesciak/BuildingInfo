@@ -13,33 +13,20 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class LocationCalculationsController {
   @PostMapping("/cube")
-  fun countTotalCube(@RequestBody loc: Location): Double {
-    return loc.cube
-  }
+  fun countTotalCube(@RequestBody loc: Location) =  loc.cube
 
   @PostMapping("/area")
-  fun countTotalArea(@RequestBody loc: Location): Double {
-    return loc.area
-  }
+  fun countTotalArea(@RequestBody loc: Location) = loc.area
+
   @PostMapping("/lightPerArea")
-  fun calculateLightPerArea(@RequestBody loc: Location): Double{
-    return loc.light/loc.area
-  }
+  fun calculateLightPerArea(@RequestBody loc: Location) = loc.light/loc.area
 
   @PostMapping("/heatPerCube")
-  fun calculateHeatingPerVolume(@RequestBody loc: Location): Double{
-    return loc.heating/loc.cube
-  }
+  fun calculateHeatingPerVolume(@RequestBody loc: Location) = loc.heating/loc.cube
 
   @PostMapping("/alert")
-  fun  energyAlert(@RequestBody lim: HeatingPerCubeLimit): MutableList<Room>{
-    val aboveLimit: MutableList<Room> = mutableListOf()
-    for (i in 0..(lim.loc.levels.size-1)) {
-      for (j in 0..(lim.loc.levels[i].rooms.size - 1)) {
-        if (calculateHeatingPerVolume(lim.loc.levels[i].rooms[j]) > lim.limit)
-          aboveLimit.add(lim.loc.levels[i].rooms[j])
-      }
-    }
-    return aboveLimit
-  }
+  fun  energyAlert(@RequestBody lim: HeatingPerCubeLimit) =
+    lim.loc.levels
+      .flatMap { it.rooms }
+      .filter { calculateHeatingPerVolume(it) > lim.limit }
 }
