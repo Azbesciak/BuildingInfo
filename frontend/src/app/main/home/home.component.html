@@ -1,1 +1,2 @@
-<app-location-creator></app-location-creator>
+<app-locations-view [locationsBus]="locationsBus" *ngIf="locationsBus"></app-locations-view>
+<app-location-creator (newLocation)="onLocationAdded($event)"></app-location-creator>

@@ -1,4 +1,4 @@
 <mat-card>
   <app-location-adder (change)="onLocTypeChange($event)"></app-location-adder>
-  <app-location-form [locType]="locType"></app-location-form>
+  <app-location-form [locType]="locType" (added)="onLocationAdded($event)"></app-location-form>
 </mat-card>

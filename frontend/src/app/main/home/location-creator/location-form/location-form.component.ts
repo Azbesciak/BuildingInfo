@@ -33,7 +33,7 @@ export class LocationFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  getLoc(locType: LocationType, old = null): Location {
+  getLoc(locType: LocationType = this._locType, old = null): Location {
     const id = old ? old.id : null;
     const name = old ? old.name : null;
     switch (locType) {
@@ -46,9 +46,10 @@ export class LocationFormComponent implements OnInit {
 
   onCreate() {
     if (this.locForm.valid) {
-
+      this.added.next(this.location);
+      this.location = this.getLoc();
+      this.locForm.resetForm()
     }
-
   }
 
   isRoom() {

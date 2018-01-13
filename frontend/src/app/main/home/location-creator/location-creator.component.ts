@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {LocationType} from "../../locations";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {LocationType, Location} from "../../locations";
 
 @Component({
   selector: 'app-location-creator',
@@ -8,8 +8,15 @@ import {LocationType} from "../../locations";
 })
 export class LocationCreatorComponent implements OnInit {
 
+  @Output()
+  newLocation = new EventEmitter<Location>();
+
   locType: LocationType;
   ngOnInit(): void {
+  }
+
+  onLocationAdded(loc: Location) {
+    this.newLocation.next(loc);
   }
 
   onLocTypeChange(locType: LocationType) {

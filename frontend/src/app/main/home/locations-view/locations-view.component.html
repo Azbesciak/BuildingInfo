@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar color="primary">home</mat-icon>
+    <mat-card-title>Rooms</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let room of rooms">{{room.id}} {{room.name}}</div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar color="primary">layers</mat-icon>
+    <mat-card-title>Levels</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let level of levels">{{level.id}} {{level.name}}</div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar color="primary">business</mat-icon>
+    <mat-card-title>Buildings</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let building of buildings">{{building.id}} {{building.name}}</div>
+  </mat-card-content>
+</mat-card>
