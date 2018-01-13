@@ -7,13 +7,19 @@ import { LocationAdderComponent } from './home/location-creator/location-adder/l
 import { LocationFormComponent } from './home/location-creator/location-form/location-form.component';
 import {FunctionalModule} from "../functional/functional.module";
 import { LocationsViewComponent } from './home/locations-view/locations-view.component';
+import {DndModule} from "ng2-dnd";
+import { RoomViewComponent } from './home/locations-view/room-view/room-view.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FunctionalModule
+    FunctionalModule,
+    DndModule.forRoot()
   ],
   exports: [HomeComponent],
-  declarations: [HomeComponent, LocationCreatorComponent, LocationAdderComponent, LocationFormComponent, LocationsViewComponent]
+  declarations: [
+    HomeComponent, LocationCreatorComponent, LocationAdderComponent,
+    LocationFormComponent, LocationsViewComponent, RoomViewComponent
+  ]
 })
 export class MainModule { }

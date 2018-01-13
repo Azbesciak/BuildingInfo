@@ -31,9 +31,6 @@ const MATERIAL_MODULES = [
     BrowserAnimationsModule,
     MATERIAL_MODULES
   ],
-  providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher},
-  ],
   declarations: []
 })
 export class MaterialModule { }

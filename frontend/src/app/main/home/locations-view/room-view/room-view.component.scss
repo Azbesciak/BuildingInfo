@@ -1,0 +1,30 @@
+:host {
+  mat-card {
+    display: grid;
+    width: 390px;
+    padding: 7px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-template-rows: 20px 20px;
+
+    @for $i from 2 through 6 {
+      .item-#{$i} {
+        grid-row: 2;
+        font-size: 11px;
+        color: #7f7f7f;
+      }
+    }
+
+    .items {
+      display: flex;
+      .label {
+        font-weight: 700;
+        &:after {
+          margin-right: 5px;
+          content: ":";
+        }
+      }
+    }
+  }
+
+}

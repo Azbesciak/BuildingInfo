@@ -46,4 +46,28 @@ export class LocationsViewComponent implements OnInit {
     if (!this.levels) this.levels = [];
     if (!this.rooms) this.rooms = [];
   }
+
+  removeRoom(i: number) {
+    console.log("call")
+    this.rooms.splice(i, 1);
+    this.rooms = this.rooms;
+  }
+
+  removeRoomFromLevel(levInd: number, roomInd: number) {
+    console.log("lef?", levInd, roomInd)
+    this.levels[levInd].rooms.splice(roomInd, 1)
+    this.levels = this.levels;
+  }
+
+  addRoomToLevel(levInd: number, room: any) {
+    console.log("invoked")
+    this.levels[levInd].rooms.push(room.dragData)
+    this.levels = this.levels
+  }
+
+  addRoom($event: any) {
+    console.log("drop")
+    this.rooms.push($event.dragData);
+    this.rooms = this.rooms;
+  }
 }

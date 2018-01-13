@@ -1,0 +1,6 @@
+<mat-card>
+  <div *ngFor="let it of items; let i = index" class="items" [ngClass]="'item-' + i">
+    <div class="label">{{it.key}}</div>
+    <div class="value">{{it.value}}</div>
+  </div>
+</mat-card>

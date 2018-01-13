@@ -1,10 +1,15 @@
-<mat-card>
+<mat-card dnd-droppable (onDropSuccess)="addRoom($event)" [dropZones]="['rooms']">
   <mat-card-header>
     <mat-icon mat-card-avatar color="primary">home</mat-icon>
     <mat-card-title>Rooms</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let room of rooms">{{room.id}} {{room.name}}</div>
+    <div *ngFor="let room of rooms; let i = index "
+         dnd-draggable
+         [dragData]="room" (onDragSuccess)="removeRoom(i)" [dragEnabled]="true"
+         [dropZones]="['lev-room']">
+      <app-room-view [room]="room"></app-room-view>
+    </div>
   </mat-card-content>
 </mat-card>
 <mat-card>
@@ -13,7 +18,16 @@
     <mat-card-title>Levels</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let level of levels">{{level.id}} {{level.name}}</div>
+    <div *ngFor="let level of levels; let li = index" dnd-droppable dnd-draggable [dropZones]="['lev-room']"
+         (onDropSuccess)="addRoomToLevel(li, $event)">
+      {{level.id}} {{level.name}}
+      <div *ngFor="let room of level.rooms; let ri = index" dnd-draggable [dragData]="room"
+           (onDragSuccess)="removeRoomFromLevel(li, ri)" [dragEnabled]="true"
+           [dropZones]="['build-room', 'rooms']">
+        <app-room-view [room]="room"></app-room-view>
+      </div>
+
+    </div>
   </mat-card-content>
 </mat-card>
 <mat-card>
