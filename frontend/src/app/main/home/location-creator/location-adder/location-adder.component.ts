@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {LocationType} from "../../locations";
+import {LocationType} from "../../../locations";
 
 @Component({
   selector: 'app-location-adder',

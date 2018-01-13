@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Building, Level, Location, LocationType, Room} from "../../locations";
+import {Building, Level, Location, LocationType, Room} from "../../../locations";
 import {NgForm} from "@angular/forms";
 
 @Component({

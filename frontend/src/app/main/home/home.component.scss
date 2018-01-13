@@ -1,0 +1,12 @@
+:host {
+  display: grid;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  grid-template-columns: minmax(0, auto) auto 230px minmax(0, auto);
+  grid-template-rows: minmax(0, 30px) auto  auto minmax(0, auto);
+  grid-row-gap: 20px;
+  app-location-creator {
+    grid-row: 2;
+    grid-column: 3;
+  }
+}

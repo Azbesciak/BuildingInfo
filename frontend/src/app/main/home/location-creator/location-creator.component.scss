@@ -1,0 +1,11 @@
+:host {
+  width: 230px;
+  mat-card {
+    display: grid;
+    grid-template-rows: 40px 330px;
+    grid-row-gap: 5px;
+    app-location-adder {
+      justify-self: center;
+    }
+  }
+}

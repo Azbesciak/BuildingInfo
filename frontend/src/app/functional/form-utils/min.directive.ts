@@ -10,7 +10,6 @@ export class MinDirective implements Validator {
   customMin: number;
 
   validate(c: FormControl): {[key: string]: any} {
-    console.log(c)
     let v = c.value;
     return ( v < this.customMin)? {"customMin": true} : null;
   }
