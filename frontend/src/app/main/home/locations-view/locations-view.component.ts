@@ -21,6 +21,7 @@ export class LocationsViewComponent implements OnInit {
 
   @SessionStorage()
   rooms: Array<Room>;
+  isLevDragEnabled: boolean = true;
 
   constructor() { }
 
@@ -30,13 +31,13 @@ export class LocationsViewComponent implements OnInit {
     this.locationsBus.subscribe(loc => {
       if (loc instanceof Room) {
         this.rooms.push(loc);
-        this.rooms = this.rooms.slice();
+        this.rooms = copy(this.rooms);
       } else if (loc instanceof Level) {
         this.levels.push(loc);
-        this.levels = this.levels.slice()
+        this.levels = copy(this.levels)
       } else if (loc instanceof Building) {
         this.buildings.push(loc);
-        this.buildings = this.buildings.slice()
+        this.buildings = copy(this.buildings)
       }
     })
   }
@@ -48,26 +49,69 @@ export class LocationsViewComponent implements OnInit {
   }
 
   removeRoom(i: number) {
-    console.log("call")
     this.rooms.splice(i, 1);
-    this.rooms = this.rooms;
+    this.rooms = copy(this.rooms);
   }
 
   removeRoomFromLevel(levInd: number, roomInd: number) {
-    console.log("lef?", levInd, roomInd)
-    this.levels[levInd].rooms.splice(roomInd, 1)
-    this.levels = this.levels;
+    this.levels[levInd].rooms.splice(roomInd, 1);
+    this.levels = copy(this.levels);
   }
 
   addRoomToLevel(levInd: number, room: any) {
-    console.log("invoked")
-    this.levels[levInd].rooms.push(room.dragData)
-    this.levels = this.levels
+    this.levels[levInd].rooms.push(room.dragData);
+    this.levels = copy(this.levels);
+    this.turnOnLevDrag()
   }
 
   addRoom($event: any) {
-    console.log("drop")
     this.rooms.push($event.dragData);
-    this.rooms = this.rooms;
+    this.rooms = copy(this.rooms);
+    this.turnOnLevDrag()
   }
+
+  addLevel($event: any) {
+    this.levels.push($event.dragData);
+    this.levels = copy(this.levels)
+  }
+
+  removeRoomFromBuildingLevel(bi: number, li: number, ri: number) {
+    this.buildings[bi].levels[li].rooms.splice(ri, 1);
+    this.buildings = copy(this.buildings)
+  }
+
+  addLevToBuilding(bi: number, $event: any) {
+    this.buildings[bi].levels.push($event.dragData);
+    this.buildings = copy(this.buildings)
+  }
+
+  addRoomToBuildingLevel(bi: number, li: number, $event: any) {
+    this.buildings[bi].levels[li].rooms.push($event.dragData);
+    this.buildings = copy(this.buildings);
+    this.turnOnLevDrag()
+  }
+
+  removeFromLevels(li) {
+    this.levels.splice(li, 1);
+    this.levels = copy(this.levels)
+  }
+
+  removeLevFromBuilding(bi: number, li: number) {
+    this.buildings[bi].levels.splice(li, 1);
+    this.buildings = copy(this.buildings)
+  }
+
+  turnOffLevDrag() {
+    this.isLevDragEnabled = false;
+    console.log("blocked")
+  }
+
+  turnOnLevDrag() {
+    this.isLevDragEnabled = true;
+    console.log("invoked?")
+  }
+}
+
+function copy(arr: Array<any>) {
+  return arr.slice()
 }

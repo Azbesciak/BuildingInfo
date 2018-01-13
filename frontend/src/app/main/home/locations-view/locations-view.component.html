@@ -7,27 +7,31 @@
     <div *ngFor="let room of rooms; let i = index "
          dnd-draggable
          [dragData]="room" (onDragSuccess)="removeRoom(i)" [dragEnabled]="true"
-         [dropZones]="['lev-room']">
+         [dropZones]="['lev-room', 'room-lev-bld']">
       <app-room-view [room]="room"></app-room-view>
     </div>
   </mat-card-content>
 </mat-card>
-<mat-card>
+<mat-card dnd-droppable (onDropSuccess)="addLevel($event)" [dropZones]="['levels']">
   <mat-card-header>
     <mat-icon mat-card-avatar color="primary">layers</mat-icon>
     <mat-card-title>Levels</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let level of levels; let li = index" dnd-droppable dnd-draggable [dropZones]="['lev-room']"
-         (onDropSuccess)="addRoomToLevel(li, $event)">
-      {{level.id}} {{level.name}}
-      <div *ngFor="let room of level.rooms; let ri = index" dnd-draggable [dragData]="room"
-           (onDragSuccess)="removeRoomFromLevel(li, ri)" [dragEnabled]="true"
-           [dropZones]="['build-room', 'rooms']">
-        <app-room-view [room]="room"></app-room-view>
-      </div>
+    <mat-card *ngFor="let level of levels; let li = index" dnd-droppable [dropZones]="['lev-room']"
+              (onDropSuccess)="addRoomToLevel(li, $event)">
+      <div dnd-draggable [dragData]="level" (onDragSuccess)="removeFromLevels(li)" [dropZones]="['bld-lev']"
+           [dragEnabled]="isLevDragEnabled">
+        {{level.id}} {{level.name}}
 
-    </div>
+        <div *ngFor="let room of level?.rooms || []; let ri = index" dnd-draggable [dragData]="room"
+             (onDragSuccess)="removeRoomFromLevel(li, ri)" [dragEnabled]="true"
+             (onDragStart)="turnOffLevDrag()" (onDragEnd)="turnOnLevDrag()"
+             [dropZones]="['room-lev-bld', 'rooms', 'lev-room']">
+          <app-room-view [room]="room"></app-room-view>
+        </div>
+      </div>
+    </mat-card>
   </mat-card-content>
 </mat-card>
 <mat-card>
@@ -36,6 +40,24 @@
     <mat-card-title>Buildings</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div *ngFor="let building of buildings">{{building.id}} {{building.name}}</div>
+    <mat-card *ngFor="let building of buildings; let bi = index" dnd-droppable [dropZones]="['bld-lev']"
+              (onDropSuccess)="addLevToBuilding(bi, $event)">
+      {{building.id}} {{building.name}}
+      <mat-card *ngFor="let level of building.levels; let li = index" dnd-droppable
+                (onDropSuccess)="addRoomToBuildingLevel(bi, li, $event)" [dropZones]="['room-lev-bld']">
+        <div dnd-draggable (onDragSuccess)="removeLevFromBuilding(bi, li)" [dragEnabled]="isLevDragEnabled"
+             [dropZones]="['levels']" [dragData]="level">
+          {{level.id}} {{level.name}}
+          <div *ngFor="let room of level.rooms; let ri = index" dnd-draggable [dragData]="room"
+               (onDragSuccess)="removeRoomFromBuildingLevel(bi, li, ri)" [dragEnabled]="true"
+               (onDragStart)="turnOffLevDrag()" (onDragEnd)="turnOnLevDrag()"
+               [dropZones]="['rooms', 'room-lev-bld', 'lev-room']">
+            <div>
+              <app-room-view [room]="room"></app-room-view>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </mat-card>
   </mat-card-content>
 </mat-card>
