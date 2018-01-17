@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Subject} from "rxjs/Subject";
 import {SessionStorage} from "ngx-webstorage";
-import {Building, Level, Room} from "../../locations";
+import {Building, Level, Location, Room} from "../../locations";
 
 @Component({
   selector: 'app-locations-view',
@@ -103,15 +103,13 @@ export class LocationsViewComponent implements OnInit {
 
   turnOffLevDrag() {
     this.isLevDragEnabled = false;
-    console.log("blocked")
   }
 
   turnOnLevDrag() {
     this.isLevDragEnabled = true;
-    console.log("invoked?")
   }
 }
 
-function copy(arr: Array<any>) {
-  return arr.slice()
+function copy(arr: Array<Location>) {
+  return arr.map(l => l.copy())
 }
