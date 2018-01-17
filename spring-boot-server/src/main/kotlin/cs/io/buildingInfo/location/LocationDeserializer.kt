@@ -12,8 +12,7 @@ import com.fasterxml.jackson.databind.*
 class LocationDeserializer : JsonDeserializer<Location>() {
 
   override fun deserialize(p: JsonParser, ctxt: DeserializationContext): Location {
-    val node: JsonNode = p.readValueAsTree()
-    val location = node.findPath("location")
+    val location: JsonNode = p.readValueAsTree()
     return when {
       location.has("levels") -> location.asBuilding()
       location.has("rooms") -> location.asLevel()

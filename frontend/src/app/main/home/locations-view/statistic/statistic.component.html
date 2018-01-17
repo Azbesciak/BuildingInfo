@@ -1,0 +1,12 @@
+<div *ngFor="let ac of actions" class="actions">
+  <button mat-icon-button (click)="ac.fun(ac)" [matTooltip]="ac.tooltip"
+          [disabled]="!enabled || location[ac.fieldName] >= 0 || (ac.valFun && !ac.valFun(ac))">
+    <mat-icon>{{ac.icon}}</mat-icon>
+  </button>
+  <div class="value" *ngIf="!ac.text; else textInp">{{location[ac.fieldName] | number}}</div>
+  <ng-template  #textInp>
+    <mat-form-field class="value ">
+      <input matInput [(ngModel)]="ac.value" name="value" placeholder="Alert threshold" type="number" required>
+    </mat-form-field>
+  </ng-template>
+</div>

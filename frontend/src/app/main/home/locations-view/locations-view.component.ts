@@ -108,8 +108,13 @@ export class LocationsViewComponent implements OnInit {
   turnOnLevDrag() {
     this.isLevDragEnabled = true;
   }
+
+  reassingAll() {
+    this.levels = this.levels;
+    this.buildings = this.buildings
+  }
 }
 
 function copy(arr: Array<Location>) {
-  return arr.map(l => l.copy())
+  return arr.map(l => Location.copy(l))
 }

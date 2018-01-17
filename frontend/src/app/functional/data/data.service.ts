@@ -29,7 +29,7 @@ export class DataService {
     return this.locationPost("alert", {loc: location, limit: limit})
   }
 
-  locationPost(url: string, body: any) {
+  private locationPost(url: string, body: any) {
     return this.http.post(toApi(url), body).toPromise();
   }
 }

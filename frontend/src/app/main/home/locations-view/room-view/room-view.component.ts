@@ -17,6 +17,7 @@ export class RoomViewComponent implements OnInit {
 
   ngOnInit() {
     this.items = Object.keys(this.room)
+      .filter(k => 'alert' != k)
       .map(k => new Item(k, this.room[k]))
   }
 

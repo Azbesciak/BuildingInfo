@@ -9,6 +9,7 @@ import {FunctionalModule} from "../functional/functional.module";
 import { LocationsViewComponent } from './home/locations-view/locations-view.component';
 import {DndModule} from "ng2-dnd";
 import { RoomViewComponent } from './home/locations-view/room-view/room-view.component';
+import { StatisticComponent } from './home/locations-view/statistic/statistic.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { RoomViewComponent } from './home/locations-view/room-view/room-view.com
   exports: [HomeComponent],
   declarations: [
     HomeComponent, LocationCreatorComponent, LocationAdderComponent,
-    LocationFormComponent, LocationsViewComponent, RoomViewComponent
+    LocationFormComponent, LocationsViewComponent, RoomViewComponent, StatisticComponent
   ]
 })
 export class MainModule { }

@@ -1,0 +1,31 @@
+:host {
+
+  .actions {
+    display: grid;
+    grid-template-columns: 100px 20px;
+    grid-column-gap: 5px;
+  }
+  .mat-icon-button {
+    grid-column: 2;
+    width: 20px;
+    line-height: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  .mat-icon {
+    font-size: 16px;
+  }
+  .value {
+    grid-column: 1;
+    justify-self: flex-end;
+    grid-row: 1;
+  }
+  mat-form-field {
+    width: 100px;
+    height: 20px;
+    font-size: 11px;
+    /deep/ .mat-input-wrapper {
+      transform: translateY(-10px);
+    }
+  }
+}
