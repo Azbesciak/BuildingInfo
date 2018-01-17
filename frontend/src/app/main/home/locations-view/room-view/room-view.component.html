@@ -1,6 +1,5 @@
 <mat-card>
   <div *ngFor="let it of items; let i = index" class="items" [ngClass]="'item-' + i">
-    <div class="label">{{it.key}}</div>
-    <div class="value">{{it.value}}</div>
+    <app-key-value [key]="it.key" [value]="it.value"></app-key-value>
   </div>
 </mat-card>

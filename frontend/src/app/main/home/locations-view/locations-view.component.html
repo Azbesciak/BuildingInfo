@@ -22,8 +22,11 @@
               (onDropSuccess)="addRoomToLevel(li, $event)">
       <div dnd-draggable [dragData]="level" (onDragSuccess)="removeFromLevels(li)" [dropZones]="['bld-lev']"
            [dragEnabled]="isLevDragEnabled">
-        {{level.id}} {{level.name}}
-
+        <div class="label-container">
+          <app-key-value key="name" [value]="level.name"></app-key-value>
+          <app-key-value key="id" [value]="level.id"></app-key-value>
+        </div>
+        <app-key-value key="rooms"></app-key-value>
         <div *ngFor="let room of level?.rooms || []; let ri = index" dnd-draggable [dragData]="room"
              (onDragSuccess)="removeRoomFromLevel(li, ri)" [dragEnabled]="true"
              (onDragStart)="turnOffLevDrag()" (onDragEnd)="turnOnLevDrag()"
@@ -42,12 +45,22 @@
   <mat-card-content>
     <mat-card *ngFor="let building of buildings; let bi = index" dnd-droppable [dropZones]="['bld-lev']"
               (onDropSuccess)="addLevToBuilding(bi, $event)">
-      {{building.id}} {{building.name}}
+      <div class="label-container">
+        <app-key-value key="name" [value]="building.name"></app-key-value>
+        <app-key-value key="id" [value]="building.id"></app-key-value>
+      </div>
+
+      <app-key-value key="levels"></app-key-value>
       <mat-card *ngFor="let level of building.levels; let li = index" dnd-droppable
                 (onDropSuccess)="addRoomToBuildingLevel(bi, li, $event)" [dropZones]="['room-lev-bld']">
         <div dnd-draggable (onDragSuccess)="removeLevFromBuilding(bi, li)" [dragEnabled]="isLevDragEnabled"
              [dropZones]="['levels']" [dragData]="level">
-          {{level.id}} {{level.name}}
+          <div class="label-container">
+            <app-key-value key="name" [value]="level.name"></app-key-value>
+            <app-key-value key="id" [value]="level.id"></app-key-value>
+          </div>
+
+          <app-key-value key="rooms"></app-key-value>
           <div *ngFor="let room of level.rooms; let ri = index" dnd-draggable [dragData]="room"
                (onDragSuccess)="removeRoomFromBuildingLevel(bi, li, ri)" [dragEnabled]="true"
                (onDragStart)="turnOffLevDrag()" (onDragEnd)="turnOnLevDrag()"

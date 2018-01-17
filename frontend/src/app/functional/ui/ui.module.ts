@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MaterialModule} from "./material/material.module";
 import { HeaderComponent } from './header/header.component';
 import { SpacerComponent } from './spacer/spacer.component';
+import { KeyValueComponent } from './key-value/key-value.component';
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { SpacerComponent } from './spacer/spacer.component';
   exports: [
     MaterialModule,
     HeaderComponent,
-    SpacerComponent
+    SpacerComponent,
+    KeyValueComponent
   ],
-  declarations: [HeaderComponent, SpacerComponent]
+  declarations: [HeaderComponent, SpacerComponent, KeyValueComponent]
 })
 export class UiModule { }
