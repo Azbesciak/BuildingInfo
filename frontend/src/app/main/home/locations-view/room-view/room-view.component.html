@@ -1,6 +1,9 @@
 <mat-card [ngClass]="{'alerted': room.alert}">
-  <div *ngFor="let it of items; let i = index" class="items" [ngClass]="'item-' + i">
-    <app-key-value [key]="it.key" [value]="it.value"></app-key-value>
+  <div class="data">
+    <div *ngFor="let it of items; let i = index" class="items" [ngClass]="'item-' + i">
+      <app-key-value [key]="it.key" [value]="it.value"></app-key-value>
+    </div>
   </div>
+
   <mat-icon *ngIf="room['alert']" class="alert-icon" matTooltip="Above alert threshold">priority_high</mat-icon>
 </mat-card>

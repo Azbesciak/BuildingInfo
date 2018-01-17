@@ -2,35 +2,45 @@
   mat-card {
     display: grid;
     width: 390px;
-    padding: 7px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 360px 20px;
     grid-column-gap: 10px;
-    grid-template-rows: 20px 20px;
+    padding: 7px;
+    .data {
+      grid-column: 1;
+      display: grid;
+      width: 360px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 10px;
+      grid-template-rows: 20px 20px;
 
-    @for $i from 2 through 6 {
-      .item-#{$i} {
-        grid-row: 2;
-        font-size: 11px;
-        color: #7f7f7f;
+      @for $i from 2 through 6 {
+        .item-#{$i} {
+          grid-row: 2;
+          font-size: 11px;
+          color: #7f7f7f;
+        }
       }
+      .item-1 {
+        grid-column: 2/5;
+      }
+
+      .items {
+        display: flex;
+      }
+
     }
-    .item-1 {
-      grid-column: 2/5;
     }
 
-    .items {
-      display: flex;
-    }
-
-  }
   .alerted {
     background: #f443364a;
   }
   .alert-icon {
-    width: 15px;
-    height: 15px;
-    line-height: 15px;
-    font-size: 15px;
+    grid-column: 2;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
     color: red;
+    align-self: center;
   }
 }
