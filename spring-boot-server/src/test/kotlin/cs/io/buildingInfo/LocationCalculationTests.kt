@@ -267,4 +267,68 @@ class LocationCalculationTests(private val webApplicationContext: WebApplication
       .andExpect(status().isOk)
       .andExpect(content().json("0.4"))
   }
+
+  @Test
+  fun `test alert`() {
+    val perform = mockMvc.perform(post("/alert").contentType(MediaType.APPLICATION_JSON_UTF8)
+      .content("""
+        {
+          "limit": 0.9,
+          "loc":
+          {
+            "id": 7,
+            "name": "some building",
+            "levels": [
+              {
+                "id": 14,
+                "name": "1st",
+                "rooms": [
+                  {
+                    "cube": 17,
+                    "area": 8,
+                    "heating": 17,
+                    "light": 18,
+                    "id": 2,
+                    "name": "some name"
+                  },
+                  {
+                    "cube": 16,
+                    "area": 4,
+                    "heating": 12,
+                    "light": 23,
+                    "id": 14,
+                    "name": "some name"
+                  }
+                ]
+              },
+              {
+                "id": 69,
+                "name": "2st",
+                "rooms": [
+                  {
+                    "cube": 81,
+                    "area": 8,
+                    "heating": 15,
+                    "light": 18,
+                    "id": 21,
+                    "name": "some name"
+                  },
+                  {
+                    "cube": 16,
+                    "area": 4,
+                    "heating": 12,
+                    "light": 25,
+                    "id": 141,
+                    "name": "some name"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+        """)).andDo(MockMvcResultHandlers.print())
+    perform
+      .andExpect(status().isOk)
+      .andExpect(content().json("""[{"cube":17.0,"area":8.0,"heating":17.0,"light":18.0,"name":"some name","id":2}]""" ))
+  }
 }
